@@ -6,4 +6,9 @@ contract HelloWorldContract {
   function getWord() constant returns(string) {
     return word;
   }
+
+  function setWord(string replacement) returns(string) {
+    word = replacement;
+    return word;
+  }
 }
