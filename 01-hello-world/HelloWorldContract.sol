@@ -14,12 +14,16 @@ contract HelloWorldContract {
     return word;
   }
 
-  function setWord(string replacement) returns(string) {
+  function setWord(string replacement) ifIssuer returns(string) {
+    word = replacement;
+    return "Word changed...";
+  }
+
+  modifier ifIssuer() {
     if (msg.sender != issuer) {
-      return "You are not the creator!";
+      throw;
     } else {
-      word = replacement;
-      return "Word changed...";
+      _;
     }
   }
 }
